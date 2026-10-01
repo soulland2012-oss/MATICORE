@@ -1292,20 +1292,29 @@ mark.hl { background: rgba(228, 255, 58, .85); color: #08090c; padding: 0 2px; }
 .cf-chips .chip { min-height: 38px; padding: .4em .75em; font-size: 11.5px; }
 .cf-reset { width: 100%; margin-top: 8px; }
 
-.anatomy { position: relative; aspect-ratio: 220 / 330; max-width: 240px; margin: 0 auto 4px; }
-.anatomy svg { width: 100%; height: 100%; }
-.anatomy .body-line { fill: none; stroke: var(--line-3); stroke-width: 1.2; }
-.anatomy .body-fill { fill: rgba(39, 215, 255, .04); }
-.anatomy .zone { fill: transparent; stroke: transparent; stroke-width: 1.5; transition: fill var(--dur), stroke var(--dur); }
+.anatomy { position: relative; aspect-ratio: 485 / 810; max-width: 250px; margin: 0 auto 4px; }
+.anatomy svg { width: 100%; height: 100%; overflow: visible; }
+.anatomy .body-line { fill: none; stroke: rgba(160, 190, 220, .55); stroke-width: 1.4; vector-effect: non-scaling-stroke; stroke-linejoin: round; transition: stroke var(--dur); }
+.anatomy .body-fill { fill: rgba(39, 215, 255, .045); }
+.anatomy .zone { fill: transparent; transition: fill var(--dur), stroke var(--dur); }
+.anatomy .zone--nervous { fill: none; stroke: rgba(39, 215, 255, .14); stroke-width: 1.2; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+/* Выбранная категория */
 .anatomy[data-cat="eyes"] .zone--eyes,
 .anatomy[data-cat="brain"] .zone--brain,
-.anatomy[data-cat="nervous"] .zone--nervous,
 .anatomy[data-cat="arms"] .zone--arms,
 .anatomy[data-cat="legs"] .zone--legs,
-.anatomy[data-cat="organs"] .zone--organs { fill: rgba(39, 215, 255, .22); stroke: var(--cyan); }
-.anatomy[data-cat="skin"] .body-line { stroke: var(--cyan); stroke-width: 2.4; filter: drop-shadow(0 0 4px var(--cyan)); }
-.anatomy .zone--nervous { fill: none; }
-.anatomy[data-cat="nervous"] .zone--nervous { fill: none; stroke: var(--cyan); stroke-width: 2.6; filter: drop-shadow(0 0 4px var(--cyan)); }
+.anatomy[data-cat="organs"] .zone--organs { fill: rgba(39, 215, 255, .3); }
+.anatomy[data-cat="nervous"] .zone--nervous { stroke: var(--cyan); stroke-width: 2.2; filter: drop-shadow(0 0 4px var(--cyan)); }
+.anatomy[data-cat="skin"] .body-line { stroke: var(--cyan); stroke-width: 2.4; filter: drop-shadow(0 0 5px var(--cyan)); }
+.anatomy[data-cat="all"] .body-line { stroke: rgba(39, 215, 255, .6); }
+/* Предпросмотр при наведении на точку */
+.anatomy:has(.hotspot[data-cat="eyes"]:hover) .zone--eyes,
+.anatomy:has(.hotspot[data-cat="brain"]:hover) .zone--brain,
+.anatomy:has(.hotspot[data-cat="arms"]:hover) .zone--arms,
+.anatomy:has(.hotspot[data-cat="legs"]:hover) .zone--legs,
+.anatomy:has(.hotspot[data-cat="organs"]:hover) .zone--organs { fill: rgba(39, 215, 255, .16); }
+.anatomy:has(.hotspot[data-cat="nervous"]:hover) .zone--nervous { stroke: rgba(39, 215, 255, .6); }
+.anatomy:has(.hotspot[data-cat="skin"]:hover) .body-line { stroke: rgba(39, 215, 255, .9); }
 .hotspot {
   position: absolute; transform: translate(-50%, -50%);
   min-width: 44px; min-height: 44px; display: grid; place-items: center;
